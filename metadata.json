@@ -1,0 +1,8 @@
+{
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ],
+  "description": "Rastreo de Furgonetas con Inteligencia Artificial y Mapas.",
+  "name": "monitoreo de furgonetas "
+}

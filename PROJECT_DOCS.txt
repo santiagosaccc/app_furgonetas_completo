@@ -1,0 +1,50 @@
+DOCUMENTACIÓN DEL SISTEMA FLEET LINK v3.0 (EDICIÓN VISUAL)
+
+1. DESCRIPCIÓN GENERAL
+----------------------
+Fleet Link es una plataforma de comando y control para logística y seguridad. Integra mapas en tiempo real, inteligencia artificial generativa (Gemini) y simulación de sistemas de videovigilancia.
+
+2. ARQUITECTURA TÉCNICA
+-----------------------
+A. FRONTEND (Web Dashboard)
+   - Lenguaje: TypeScript / React 18.
+   - Mapa: Leaflet.js con capas de satélite ESRI.
+   - Estilos: Tailwind CSS (Diseño "Dark Mode" Militar).
+   - IA: Google GenAI SDK (Gemini 2.5 Flash).
+
+B. CARACTERÍSTICAS PRINCIPALES
+   1. Rastreo GPS:
+      - Visualización de unidades en mapa.
+      - Interpolación de movimiento simulado.
+      - Conexión (simulada) con App Android.
+   
+   2. Videovigilancia (CCTV):
+      - Componente `CameraFeed`.
+      - MODO 1: Simulación (Ruido estático + Animación CSS).
+      - MODO 2: Live (Uso de Webcam local mediante `getUserMedia`).
+      - Análisis IA: El botón "Analizar IA" envía una descripción del contexto a Gemini para generar un reporte de seguridad.
+
+   3. Asistente Táctico (Chat):
+      - Ventana flotante con Gemini 2.5.
+      - Capacidad de "Grounding" con Google Maps para buscar direcciones reales y obtener coordenadas.
+
+3. ESTRUCTURA DE ARCHIVOS
+-------------------------
+/
+├── index.html            # Punto de entrada, carga de librerías CSS/JS.
+├── index.tsx             # CÓDIGO PRINCIPAL (Lógica, UI, Mapas, IA).
+├── metadata.json         # Permisos (Cámara, Geolocalización).
+├── PROJECT_DOCS.txt      # Esta documentación general.
+├── CAMERA_SETUP_GUIDE.md # [NUEVO] Guía técnica para configuración de cámaras.
+└── ANDROID_APP_CODE.md   # Código fuente para la app móvil nativa.
+
+4. FLUJO DE ANÁLISIS DE IMAGEN (IA)
+-----------------------------------
+Actualmente, como las cámaras son simuladas o webcam local, no enviamos la imagen real (bytes) a la IA para ahorrar ancho de banda en esta demo.
+Lógica:
+1. El usuario pulsa "ANALIZAR IA".
+2. El sistema toma los metadatos de la furgoneta (Carga, Velocidad, Estado).
+3. Se construye un prompt de texto describiendo la escena teórica.
+4. Gemini devuelve un reporte de seguridad simulado basado en esos datos.
+
+*Nota: Para análisis real de visión por computadora, ver CAMERA_SETUP_GUIDE.md*
