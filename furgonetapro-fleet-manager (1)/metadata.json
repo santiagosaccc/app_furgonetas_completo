@@ -1,0 +1,8 @@
+{
+  "name": "FurgonetaPro Fleet Manager",
+  "description": "A high-performance fleet management dashboard for van rentals and logistics, featuring AI-powered maintenance tracking, route optimization, and inventory management.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
